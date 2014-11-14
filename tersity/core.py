@@ -98,6 +98,23 @@ class EmptyRows(Widget):
         return empty_rows
 
 
+class Template(object):
+    """
+        Representation of a template or HTML file.
+    """
+    def __init__(self, filename=""):
+        # filename is the file from which the template would be loaded
+        self.filename = filename
+        # templateUrl is the url from which the template would be loaded
+        self.templateUrl = ""
+    def render_str(self):
+        # todo: implement for templateUrl
+        if self.filename:
+            with open(self.filename, 'r') as tmpltfile:
+                return tmpltfile.read()
+
+
+
 class Layout(object):
     pass
 

@@ -60,7 +60,9 @@ Row
 ---
 
 A Row contains a number of columns. Rows and columns together provide a grid system to organize page elements/widgets
-in a layout
+in a layout. A row can include widgets, templates and basically any class that provides a render_str() method
+which returns the content corresponding to that widget. To program a basic html file simply use the Template
+class with the filename attribute containing the path to the HTML file.
 
 Column
 ------

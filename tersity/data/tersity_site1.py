@@ -30,13 +30,14 @@ dashboard_page.layout = HorizontalLayout(2)
 dashboard_page.layout.section.rows[0] = RawHtml(html="<label>Please select one of the tabs below</label>")
 
 tab_one_section = Section(1)
-tab_one_section.rows[0] = RawHtml("This is tab one")
+tab_one_section.rows[0] = RawHtml("Notifications")
 
 tab_two_section = Section(1)
-tab_two_section.rows[0] = RawHtml("This is tab two")
+#tab_two_section.rows[0] = RawHtml("This is tab two")
+tab_two_section.rows[0] = Template(filename="data/notifications.html")
 
-dashboard_page.layout.section.rows[1] = TabbedLayout(tabs=[Tab("Tab One", tab_one_section),
-                                                           Tab("Tab Two", tab_two_section)])
+dashboard_page.layout.section.rows[1] = TabbedLayout(tabs=[Tab("Notifications", tab_one_section),
+                                                           Tab("Manage Notifications", tab_two_section)])
 
 # BASIC APP SETUP
 

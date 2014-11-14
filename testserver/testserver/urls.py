@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^$', 'testserver.views.index', name='index'),
+    url(r'^dashboard', 'testserver.views.index', name='index'),
     url(r'^load_template','testserver.views.load_template',name='load_template'),
     url(r'^login_user','testserver.views.login_user',name='login_user'),
 )
