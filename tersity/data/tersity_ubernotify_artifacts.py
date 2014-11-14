@@ -4,7 +4,7 @@ from core import Function
 onlogin = Function(name="on_login", code="""
 $scope.on_login = function() {
     console.log("on_login: the real deal");
-    LoginAPI.login("a", "b");
+    LoginAPI.login("a", "b", "/login_user", "dashboard");
 
 }
 

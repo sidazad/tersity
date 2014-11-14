@@ -8,6 +8,7 @@ import shutil
 from core import *
 
 
+
 class TersityGen(object):
     def __init__(self):
         pass
@@ -35,7 +36,7 @@ class AngularGen(TersityGen):
 
 
     def copy_user_files(self):
-        shutil.copyfile("../data/tersity_%s_services.js" % self.app.name, self.jsdir+"/tersity_%s_services.js" % self.app.name)
+        shutil.copyfile("./data/tersity_%s_services.js" % self.app.name, self.jsdir+"/tersity_%s_services.js" % self.app.name)
 
 
     def pre_process(self):
@@ -77,12 +78,14 @@ class AngularGen(TersityGen):
 
 .state('{PAGE_NAME}', {{
     url: "{PAGE_URL}",
-        templateUrl: '{STATIC_ROOT}/templates/{PAGE_NAME}.html',
+        templateUrl: '{TEMPLATE_URL_PREFIX}{PAGE_NAME}.html',
         controller: "{PAGE_NAME}Ctrl"
     }})
-""".format(STATIC_ROOT=self.app.static_root, PAGE_NAME=page.name, PAGE_URL=url)
+""".format(STATIC_ROOT=self.app.static_root, PAGE_NAME=page.name, PAGE_URL=url, TEMPLATE_URL_PREFIX=self.app.template_url_prefix)
         statestr += ";"
         return statestr
+
+
 
     def gen_app(self):
         print "gen_app"
@@ -94,7 +97,7 @@ class AngularGen(TersityGen):
         appfile.write("""
 
 'use strict';
-var app = angular.module('{APPNAME}', ['ui.router', 'ui.bootstrap']).config(["$stateProvider", "$locationProvider", function($stateProvider, $locationProvider) {{
+var app = angular.module('{APPNAME}', ['ui.router', 'ui.bootstrap', 'ngCookies']).config(["$stateProvider", "$locationProvider", function($stateProvider, $locationProvider) {{
     $stateProvider
         {STATE_STR}
     $locationProvider
@@ -129,6 +132,8 @@ app.run(['$state', function ($state) {{
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
     <!-- Angular UI Router -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <!-- Angular Cookies -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.js"></script>
     <!-- AngularJS Bootstrap -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 

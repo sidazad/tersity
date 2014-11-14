@@ -1,0 +1,20 @@
+show landing
+landing # or leave blank for pre-defined standard landing page
+    menu
+    login button
+        press -> call loginsvc.login
+            success -> show dashboard
+            failure -> show landing
+    signup button
+        press -> show signup
+signup:popup
+dashboard
+    layout: 3 pane
+    top left pane
+        projname:text projdes:text add:button
+        projgrid:grid
+            url:/getdata/data.json
+            select row -> generate project-selected
+    top right pane
+
+

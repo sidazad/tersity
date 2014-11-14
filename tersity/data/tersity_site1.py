@@ -1,6 +1,6 @@
 
 from core import *
-from tersity_ubernotify_artifacts import *
+from data.tersity_ubernotify_artifacts import *
 
 # LANDING PAGE
 
@@ -41,8 +41,12 @@ dashboard_page.layout.section.rows[1] = TabbedLayout(tabs=[Tab("Tab One", tab_on
 # BASIC APP SETUP
 
 app = TersityApp("ubernotify")
-app.static_root = ""
-app.genpath = "genapps/ubernotify"
+app.static_root = "/static"
+# template url for django (will require load_template url to provide templates)
+app.template_url_prefix="/load_template?name="
+# normal template url
+#app.template_url_prefix="/templates"
+app.genpath = "/Users/sidazad/dev/tersity/tersity/genapps/ubernotify"
 app.baseurl = "ubernotify.com"
 app.framework = "angularjs"
 app.backend = ""

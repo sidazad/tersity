@@ -96,13 +96,14 @@ ToDo
   grid gets populated
 - CSS support
 - Add footer to generated site ("This site has been generated using Tersity")
+- Need test cases
 
 
 USAGE
 =====
 
-WEB SERVER
-----------
+LOCAL TEST WEB SERVER
+---------------------
 
 1. Generate the site
 python tersity_runner.py <site-file-path>
@@ -110,4 +111,13 @@ python tersity_runner.py <site-file-path>
 2. Run the server
 pushd ~/dev/tersity/tersity/genapps/ubernotify/;  python -m SimpleHTTPServer 8001; popd
 
-2.
+
+DJANGO SERVER
+-------------
+
+1. django-admin.py statproject testserver
+2. runtersity.sh to run and deploy into testserver
+3. cd testserver/testserver; python manage.py runserver 8000
+
+
+
